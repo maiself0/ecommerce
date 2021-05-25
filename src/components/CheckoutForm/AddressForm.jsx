@@ -39,7 +39,7 @@ const AddressForm = ({ checkoutToken, next }) => {
   const fetchShippingOptions = async (checkoutTokenId, country, region = null) => {
     const options = await commerce.checkout.getShippingOptions(checkoutTokenId, { country, region })
 
-    console.log(options)
+    console.log(`+=+=+=+= ${options}`)
     setShippingOptions(options);
     setShippingOption(options[0].id)
   }
@@ -54,7 +54,7 @@ const AddressForm = ({ checkoutToken, next }) => {
 
 
   useEffect(() => {
-    if(shippingSubdivision) fetchShippingOptions(checkoutToken, shippingCountry, shippingSubdivision)
+    if(shippingSubdivision) fetchShippingOptions(checkoutToken.id, shippingCountry, shippingSubdivision)
   }, [shippingSubdivision])
 
   return (

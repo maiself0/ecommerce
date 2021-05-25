@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Paper, Stepper, Step, StepLabel, Typography, CorcularProgress, Divider, Button } from '@material-ui/core'
+import { useHistory } from 'react-router-dom'
 
 import {commerce} from '../../../lib/commerce'
 import useStyles from './styles';
@@ -14,7 +15,9 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
   const [checkoutToken, setCheckoutToken] = useState(null);
   const [shippingData, setShippingData] = useState({ })
   const classes = useStyles();
-  console.log(`#### ${checkoutToken.id}`)
+  const history = useHistory();
+  
+  if(checkoutToken) console.log(`#### ${checkoutToken.id}`)
   useEffect(()=> {
 
     const generateToken = async () => {
@@ -24,7 +27,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
 
         setCheckoutToken(token)
       } catch (error) {
-
+        history.push('/')
       }
     }
 
