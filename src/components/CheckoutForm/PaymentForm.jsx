@@ -29,7 +29,7 @@ const PaymentForm = ( { checkoutToken, backStep, nextStep, shippingData, onCaptu
          },
          shipping: { 
           name: 'Primary', 
-          street: shippingData.address1, 
+          street: shippingData.address, 
           town_city: shippingData.city,
           county_state: shippingData.shippingSubdivision,
           postal_zip_code: shippingData.zip,

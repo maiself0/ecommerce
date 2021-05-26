@@ -39,9 +39,9 @@ const AddressForm = ({ checkoutToken, next }) => {
   const fetchShippingOptions = async (checkoutTokenId, country, region = null) => {
     const options = await commerce.checkout.getShippingOptions(checkoutTokenId, { country, region })
 
-    console.log(`+=+=+=+= ${options}`)
+    console.log(`+=+=+=+= ${options.id}`)
     setShippingOptions(options);
-    setShippingOption(options[0].id)
+    if(options.id) setShippingOption(options[0].id)
   }
 
   useEffect(() => {
